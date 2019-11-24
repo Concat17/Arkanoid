@@ -1,10 +1,10 @@
 export class Ball{
-    radius: number
-    velocity: number
-    direction: number[] = [1, 1]
-    x: number
-    y: number
-    color: string
+    radius: number;
+    velocity: number;
+    direction: number[] = [1, 1];
+    x: number;
+    y: number;
+    color: string;
     constructor(radius: number, x: number, y: number, color:string){
         this.radius = radius;
         this.velocity = 3;
@@ -30,10 +30,5 @@ export class Ball{
         if(this.y + this.velocity < this.radius|| this.y > canvasHeight){
             this.direction[1] *= -1
         }  
-    } 
-
-    reverseDirection() : void{
-        this.direction[0] *= -1
-        this.direction[1] *= -1
-    }
+    }  
 }

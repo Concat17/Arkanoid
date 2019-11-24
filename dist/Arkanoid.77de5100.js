@@ -156,11 +156,6 @@ function () {
     }
   };
 
-  Ball.prototype.reverseDirection = function () {
-    this.direction[0] *= -1;
-    this.direction[1] *= -1;
-  };
-
   return Ball;
 }();
 
@@ -265,15 +260,13 @@ function () {
   }
 
   RectangleFigure.prototype.placeBricks = function () {
-    var ff = new Array();
-
     for (var c = 0; c < this.brickColomns; c++) {
       this.bricks[c] = [];
 
       for (var r = 0; r < this.brickRows; r++) {
         var brickX = c * (Brick_1.Brick.width + this.brickPadding) + this.brickOffsetLeft;
         var brickY = r * (Brick_1.Brick.height + this.brickPadding) + this.brickOffsetTop;
-        this.bricks[c][r] = new Brick_1.Brick(brickX, brickY, "#70E852");
+        this.bricks[c][r] = new Brick_1.Brick(brickX, brickY, "#CC00CC");
       }
     }
   };
@@ -372,7 +365,7 @@ function () {
           var brick = figure.bricks[c][r];
           this.ctx.beginPath();
           this.ctx.rect(brick.x, brick.y, Brick_1.Brick.width, Brick_1.Brick.height);
-          this.ctx.fillStyle = "#0095DD";
+          this.ctx.fillStyle = brick.color;
           this.ctx.fill();
           this.ctx.closePath();
         }
@@ -440,7 +433,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62794" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56339" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
