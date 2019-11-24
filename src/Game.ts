@@ -76,7 +76,6 @@ export class Game {
           this.isGameOver = true;
           document.location.reload();
         }
-        //alert("Loh")
       }
     }
   }
