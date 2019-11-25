@@ -1,4 +1,7 @@
-export class Board {
+import IDrawable from './IDrawable';
+
+// just like that
+export class Board implements IDrawable {
   width: number;
   height: number;
   velocity: number;
@@ -25,6 +28,7 @@ export class Board {
     this.color = color;
   }
 
+  // need to implement interface over every draw method
   draw(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     if (this.rightPressed) {
       this.x += 5;
@@ -42,5 +46,5 @@ export class Board {
     ctx.fillStyle = this.color;
     ctx.fill();
     ctx.closePath();
-  } 
+  }
 }
