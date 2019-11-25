@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.js"],"names":["a","b","alert"],"mappings":"AAAA,IAAIA,CAAC,GAAG,CAAR;AACA,IAAIC,CAAC,GAAG,CAAR;AACAC,KAAK,CAAC,GAAD,CAAL","file":"arc.e31bb0bc.js","sourceRoot":"..\\arc","sourcesContent":["let a = 3\r\nlet b = 2\r\nalert(\"f\")"]}
