@@ -1,8 +1,8 @@
-import { Ball } from "./Ball";
-import { Board } from "./Board";
-import { Brick } from "./Brick";
-import { IBrickFigure } from "./IBrickFigure";
-import { RectangleFigure } from "./RectangeFigure";
+import { Ball } from './Ball';
+import { Board } from './Board';
+import { Brick } from './Brick';
+import { IBrickFigure } from './IBrickFigure';
+import { RectangleFigure } from './RectangeFigure';
 
 export class Game {
   ball: Ball;
@@ -74,6 +74,8 @@ export class Game {
           this.canvas.height - this.ball.radius
         ) {
           this.isGameOver = true;
+
+          // bad hack :)
           document.location.reload();
         }
       }
