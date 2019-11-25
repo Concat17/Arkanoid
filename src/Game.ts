@@ -1,6 +1,6 @@
 import { Ball } from './Ball';
 import { Board } from './Board';
-import { Brick } from './Brick';
+import Brick from './Brick';
 import { IBrickFigure } from './IBrickFigure';
 import { RectangleFigure } from './RectangeFigure';
 
