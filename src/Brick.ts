@@ -1,4 +1,5 @@
-export class Brick {
+// when file has signle method/class it's preferable to use "export default ..."
+export default class Brick {
   x: number;
   y: number;
   static width: number = 50;

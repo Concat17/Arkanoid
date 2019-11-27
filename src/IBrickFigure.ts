@@ -1,4 +1,4 @@
-import { Brick } from "./Brick";
+import Brick from './Brick';
 
 export interface IBrickFigure {
   bricks: Brick[][];

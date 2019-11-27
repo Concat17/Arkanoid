@@ -1,6 +1,6 @@
 import { Ball } from './Ball';
 import { Board } from './Board';
-import { Brick } from './Brick';
+import Brick from './Brick';
 import { IBrickFigure } from './IBrickFigure';
 import { RectangleFigure } from './RectangeFigure';
 
@@ -18,6 +18,12 @@ export class Game {
     this.canvas = document.getElementById("canvas17") as HTMLCanvasElement;
     this.ctx = this.canvas.getContext("2d");
     this.board = new Board(100, 10, 100, 5000, "#70E852");
+
+    // bad practice - need to separate blocks by functionality like that:
+    // - event listeners
+    // - external variables assigning
+    // - local variables initializing
+    // - etc.
     this.document.addEventListener(
       "keydown",
       e => this.keyDownHandler(e),
@@ -46,6 +52,10 @@ export class Game {
   draw(): void {
     if (!this.isGameOver) {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      // it's not good when u calls "ball.move" in draw() method
+      // u need to separate it into logically isolated parts
+      // for example, u can define two asynchronus loop for drawing and model processing
       this.ball.move(this.ctx);
       this.board.draw(this.canvas, this.ctx);
       this.drawBrickFigure(this.brickFigure);
@@ -59,23 +69,27 @@ export class Game {
   }
 
   checkBoard(): void {
+    // cascade-if is not a good practice - code becomes bad-readable
     if (
       this.ball.y + this.ball.velocity >
       this.canvas.height - this.ball.radius - this.board.height
     ) {
       if (
+        // maybe u need to introduce an collision class or interface?
         this.ball.x > this.board.x &&
         this.ball.x < this.board.x + this.board.width
       ) {
         this.ball.direction[1] *= -1;
       } else {
-        if (
-          this.ball.y + this.ball.velocity >
-          this.canvas.height - this.ball.radius
-        ) {
+        // it's better to collapse complex expressions inside clearly-named variables
+        // it inceases code-readability + that's a kind of documentation when u say about algorithm via naming
+        const nextBallY = this.ball.y + this.ball.velocity;
+        if (nextBallY > this.canvas.height - this.ball.radius) {
           this.isGameOver = true;
 
           // bad hack :)
+          // and u do not need to pass "document" as class argument - it's already global
+          // window.document
           document.location.reload();
         }
       }
@@ -83,6 +97,7 @@ export class Game {
   }
 
   drawBrickFigure(figure: IBrickFigure) {
+    // do not use fucking var!)
     for (var c = 0; c < figure.bricks.length; c++) {
       for (var r = 0; r < figure.bricks[0].length; r++) {
         if (figure.bricks[c][r].status == 1) {

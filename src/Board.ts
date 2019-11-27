@@ -9,6 +9,8 @@ export class Board implements IDrawable {
   x: number;
   y: number;
   color: string;
+
+  // you mustn't place user controll handling inside model - it's incorrect
   leftPressed: boolean;
   rightPressed: boolean;
 
@@ -17,7 +19,7 @@ export class Board implements IDrawable {
     height: number,
     x: number,
     y: number,
-    color: string
+    color: string // here we have tslint and prettier mismatch (about trailing comma - we need to fix it some way)
   ) {
     this.width = width;
     this.height = height;

@@ -1,10 +1,10 @@
-import { IBrickFigure } from "./IBrickFigure";
-import { Brick } from "./Brick";
+import Brick from './Brick';
+import { IBrickFigure } from './IBrickFigure';
 
 export class RectangleFigure implements IBrickFigure {
   brickColomns: number = 7;
   brickRows: number = 3;
-  bricks: Brick[][] = new Array();
+  bricks: Brick[][] = []; // it's more laconically
   brickPadding: number = 30;
   brickOffsetTop: number = 30;
   brickOffsetLeft: number = 30;
@@ -12,7 +12,16 @@ export class RectangleFigure implements IBrickFigure {
     this.placeBricks();
   }
 
+  // u can introduce your collision logic for rectangle objects right here for:
+  // board
+  // bricks
+
   placeBricks(): void {
+    // u do not really need to sign "c" as "number" here - it's obvious
+    // good:
+    // const myNumber = 1;
+    // bad: (overdefined)
+    // const myNumber : number = 1;
     for (var c: number = 0; c < this.brickColomns; c++) {
       this.bricks[c] = [];
       for (var r: number = 0; r < this.brickRows; r++) {
